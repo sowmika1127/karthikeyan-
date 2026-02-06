@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Valentine’s Day ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #fff;
+      text-align: center;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      max-width: 550px;
+      animation: fadeIn 2s ease;
+    }
+    h1 {
+      font-size: 2.4rem;
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      font-weight: normal;
+    }
+    p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+    .heart {
+      font-size: 3rem;
+      margin: 20px 0;
+      animation: beat 1s infinite;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 25px;
+      background: #ff2f68;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.3s ease;
+    }
+    button:hover {
+      background: #ff004c;
+      transform: scale(1.05);
+    }
+    footer {
+      margin-top: 25px;
+      font-size: 0.95rem;
+      opacity: 0.95;
+    }
+    .love-message {
+      margin-top: 15px;
+      font-size: 1.1rem;
+      display: none;
+    }
+    audio {
+      margin-top: 20px;
+      width: 100%;
+    }
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Happy Valentine’s Day 💖</h1>
+    <h2>To My One & Only, <strong>Karthikeyan</strong></h2>
+
+    <div class="heart">❤️</div>
+
+    <p>
+      Life with you is like my favorite comedy + romance movie 😄❤️
+      You steal my blanket, eat my snacks, tease me endlessly…
+      and still somehow manage to be the best husband ever.
+    </p>
+
+    <p>
+      Thank you for loving me, supporting me, and standing by me through everything.
+      I promise to annoy you forever — because that’s true love 😉
+    </p>
+
+    <p>
+      And here’s my favorite thought…
+      <strong>Next anniversary, we won’t be just “us”.</strong>
+      We’ll be <strong>three</strong> — you, me, and our little miracle 👶💞
+      A family built with love, laughter, and a lot of happiness.
+    </p>
+
+    <button onclick="showLove()">I Love You 💕</button>
+    <div class="love-message" id="loveMessage">
+      Forever & Always… I choose you ❤️
+    </div>
+
+    <audio controls autoplay loop>
+      <!-- Add the Tamil song file named 'unnodu-vazhatha.mp3' in the same folder -->
+      <source src="unnodu-vazhatha.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+
+    <footer>
+      With all my love,<br />
+      <strong>Sowmika S</strong> 💕
+    </footer>
+  </div>
+
+  <script>
+    function showLove() {
+      document.getElementById('loveMessage').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
