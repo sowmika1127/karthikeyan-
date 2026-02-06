@@ -99,7 +99,19 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-  </style>
+  /* Floating rose petals */
+.petal {
+  position: fixed;
+  top: -10%;
+  font-size: 20px;
+  animation: fall linear infinite;
+  z-index: 1;
+}
+@keyframes fall {
+  0% { transform: translateY(-10%) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(360deg); opacity: 0.8; }
+}
+</style>
 </head>
 <body>
 
@@ -115,7 +127,7 @@
     </p>
 
     <p class="highlight">
-      Next Valentines's Day won’t be just about us anymore…
+      Next anniversary won’t be just about us anymore…
       it’ll be about <strong>three hearts</strong> — you, me, and our little miracle 👶💞
     </p>
 
@@ -126,7 +138,7 @@
     </div>
 
     <audio id="bgMusic" controls loop>
-      <source src="Unnodu Vazhatha.mp3" type="audio/mpeg" />
+      <source src="unnodu-vazhatha.mp3" type="audio/mpeg" />
     </audio>
 
     <footer>
@@ -143,5 +155,26 @@
     }
   </script>
 
+<script>
+// Create floating rose petals
+function createPetal() {
+  const petal = document.createElement('div');
+  petal.className = 'petal';
+  petal.innerText = '🌹';
+  petal.style.left = Math.random() * 100 + 'vw';
+  petal.style.animationDuration = 5 + Math.random() * 5 + 's';
+  document.body.appendChild(petal);
+  setTimeout(() => petal.remove(), 10000);
+}
+setInterval(createPetal, 500);
+
+// I Love You click intimation
+function showLove() {
+  document.getElementById('loveMessage').style.display = 'block';
+  const music = document.getElementById('bgMusic');
+  music.play();
+  alert('💖 You just clicked I Love You 💖\n\nThis means FOREVER with Sowmika 😘');
+}
+</script>
 </body>
 </html>
