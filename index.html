@@ -7,120 +7,131 @@
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #0b141a; /* WhatsApp dark background */
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
+    }
+
+    .phone {
+      width: 360px;
+      height: 640px;
+      background: #0b141a;
+      border-radius: 25px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .header {
+      background: #075e54;
       color: #fff;
+      padding: 15px;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .chat {
+      flex: 1;
+      padding: 15px;
+      background: #0b141a;
+      overflow-y: auto;
+    }
+
+    .bubble {
+      max-width: 80%;
+      padding: 10px 14px;
+      margin-bottom: 12px;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .from-her {
+      background: #005c4b;
+      color: #fff;
+      margin-left: auto;
+      border-bottom-right-radius: 2px;
+    }
+
+    .from-system {
+      background: #1f2c33;
+      color: #cfd4d6;
+      margin: 0 auto 12px;
+      font-size: 0.85rem;
       text-align: center;
     }
-    .card {
-      background: rgba(255, 255, 255, 0.15);
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-      max-width: 550px;
-      animation: fadeIn 2s ease;
-    }
-    h1 {
-      font-size: 2.4rem;
-      margin-bottom: 10px;
-    }
-    h2 {
-      font-size: 1.4rem;
-      margin-bottom: 15px;
-      font-weight: normal;
-    }
-    p {
-      font-size: 1.05rem;
-      line-height: 1.7;
-    }
+
     .heart {
-      font-size: 3rem;
-      margin: 20px 0;
+      text-align: center;
+      font-size: 2.5rem;
+      margin: 10px 0;
       animation: beat 1s infinite;
     }
+
     button {
-      margin-top: 20px;
-      padding: 12px 25px;
+      margin: 10px auto;
+      padding: 10px 22px;
       border: none;
-      border-radius: 25px;
-      background: #ff2f68;
-      color: #fff;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: transform 0.2s ease, background 0.3s ease;
-    }
-    button:hover {
-      background: #ff004c;
-      transform: scale(1.05);
-    }
-    footer {
-      margin-top: 25px;
+      border-radius: 20px;
+      background: #25d366;
+      color: #000;
       font-size: 0.95rem;
-      opacity: 0.95;
+      cursor: pointer;
+      font-weight: 600;
     }
+
     .love-message {
-      margin-top: 15px;
-      font-size: 1.1rem;
       display: none;
+      text-align: center;
+      font-size: 1.05rem;
+      color: #ffb6c1;
+      margin-top: 10px;
     }
+
     audio {
-      margin-top: 20px;
       width: 100%;
+      background: #111;
     }
+
     @keyframes beat {
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.2); }
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Happy Valentine’s Day 💖</h1>
-    <h2>To My One & Only, <strong>Karthikeyan</strong></h2>
+  <div class="phone">
 
-    <div class="heart">❤️</div>
+    <div class="header">💖 Karthikeyan</div>
 
-    <p>
-      Life with you is like my favorite comedy + romance movie 😄❤️
-      You steal my blanket, eat my snacks, tease me endlessly…
-      and still somehow manage to be the best husband ever.
-    </p>
+    <div class="chat">
+      <div class="bubble from-system">Today</div>
 
-    <p>
-      Thank you for loving me, supporting me, and standing by me through everything.
-      I promise to annoy you forever — because that’s true love 😉
-    </p>
+      <div class="bubble from-her">Happy Valentine’s Day 💕</div>
 
-    <p>
-      And here’s my favorite thought…
-      <strong>Next valentine's day, we won’t be just “us”.</strong>
-      We’ll be <strong>three</strong> — you, me, and our little miracle 👶💞
-      A family built with love, laughter, and a lot of happiness.
-    </p>
+      <div class="bubble from-her">Life with you feels like a rom‑com where you steal my blanket, eat my snacks, and still act innocent 😄❤️</div>
 
-    <button onclick="showLove()">I Love You 💕</button>
-    <div class="love-message" id="loveMessage">
-      Forever & Always… I choose you ❤️
+      <div class="bubble from-her">But honestly… I wouldn’t trade you for anything. You are my safe place, my best friend, my forever.</div>
+
+      <div class="bubble from-her">And here’s my favorite thought 🥹👇</div>
+
+      <div class="bubble from-her">Next anniversary… we won’t be just us two anymore. We’ll be THREE — you, me, and our little miracle 👶💞</div>
+
+      <div class="heart">❤️</div>
+
+      <button onclick="showLove()">I Love You</button>
+
+      <div class="love-message" id="loveMessage">Forever & Always — Yours, Sowmika S 💕</div>
     </div>
 
     <audio controls autoplay loop>
-      <!-- Add the Tamil song file named 'unnodu-vazhatha.mp3' in the same folder -->
-      <source src="https://github.com/sowmika1127/karthikeyan-/blob/main/Unnodu%20Vazhatha.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
+      <source src="unnodu-vazhatha.mp3" type="audio/mpeg" />
     </audio>
 
-    <footer>
-      With all my love,<br />
-      <strong>Sowmika S</strong> 💕
-    </footer>
   </div>
 
   <script>
@@ -130,4 +141,3 @@
   </script>
 </body>
 </html>
-
