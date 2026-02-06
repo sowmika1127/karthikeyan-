@@ -119,7 +119,7 @@
 
       <div class="bubble from-her">And here’s my favorite thought 🥹👇</div>
 
-      <div class="bubble from-her">Next anniversary… we won’t be just us two anymore. We’ll be THREE — you, me, and our little miracle 👶💞</div>
+      <div class="bubble from-her">Next valentine's… we won’t be just us two anymore. We’ll be THREE — you, me, and our little miracle 👶💞</div>
 
       <div class="heart">❤️</div>
 
@@ -128,7 +128,7 @@
       <div class="love-message" id="loveMessage">Forever & Always — Yours, Sowmika S 💕</div>
     </div>
 
-    <audio controls autoplay loop>
+    <audio id="bgMusic" controls loop>
       <source src="unnodu-vazhatha.mp3" type="audio/mpeg" />
     </audio>
 
@@ -137,6 +137,8 @@
   <script>
     function showLove() {
       document.getElementById('loveMessage').style.display = 'block';
+      const music = document.getElementById('bgMusic');
+      music.play();
     }
   </script>
 </body>
