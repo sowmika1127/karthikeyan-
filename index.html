@@ -80,7 +80,6 @@
       color: #7a4a48;
     }
 
-    /* 🌹 Floating Rose Petals */
     .petal {
       position: fixed;
       top: -10%;
@@ -170,7 +169,7 @@
       Forever & always, I choose you ❤️
     </div>
 
-    <audio id="bgMusic" controls loop>
+    <audio id="bgMusic" loop>
       <source src="Unnodu Vazhatha.mp3" type="audio/mpeg" />
     </audio>
 
@@ -193,18 +192,30 @@
   <script>
     function showLove() {
       document.getElementById('loveMessage').style.display = 'block';
-      document.getElementById('bgMusic').play();
     }
 
     function openVideo() {
-      document.getElementById("videoModal").style.display = "flex";
+      const modal = document.getElementById("videoModal");
+      const video = document.getElementById("loveVideo");
+      const music = document.getElementById("bgMusic");
+
+      modal.style.display = "flex";
+      music.play();
+      video.play();
     }
 
     function closeVideo() {
+      const modal = document.getElementById("videoModal");
       const video = document.getElementById("loveVideo");
+      const music = document.getElementById("bgMusic");
+
       video.pause();
       video.currentTime = 0;
-      document.getElementById("videoModal").style.display = "none";
+
+      music.pause();
+      music.currentTime = 0;
+
+      modal.style.display = "none";
     }
 
     function createPetal() {
