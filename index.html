@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>For You, My Love ❤️</title>
+
   <style>
     body {
       margin: 0;
@@ -67,11 +68,6 @@
       font-size: 1.05rem;
       color: #c9184a;
       font-weight: 600;
-    }
-
-    audio {
-      width: 100%;
-      margin-top: 18px;
     }
 
     footer {
@@ -143,6 +139,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <div class="card">
@@ -152,9 +149,9 @@
     <div class="heart">❤️</div>
 
     <p>
-     Life with you is proof that love means sharing food, stealing blankets,
-     and still choosing each other at the end of the day 😄❤️
-     Loving you means laughing at your jokes even when they’re not funny 😄❤️
+      Life with you is proof that love means sharing food, stealing blankets,
+      and still choosing each other at the end of the day 😄❤️
+      Loving you means laughing at your jokes even when they’re not funny 😄❤️
     </p>
 
     <p class="highlight">
@@ -169,7 +166,8 @@
       Forever & always, I choose you ❤️
     </div>
 
-    <audio id="bgMusic" loop>
+    <!-- 🎵 Background Music (Mobile Safe) -->
+    <audio id="bgMusic" loop preload="auto" playsinline>
       <source src="Unnodu Vazhatha.mp3" type="audio/mpeg" />
     </audio>
 
@@ -183,8 +181,8 @@
   <div id="videoModal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeVideo()">&times;</span>
-      <video id="loveVideo" controls>
-        <source src="WhatsApp Video 2026-02-11 at 6.41.59 PM.mp4" type="video/mp4">
+      <video id="loveVideo" controls playsinline>
+        <source src="yourvideo.mp4" type="video/mp4">
       </video>
     </div>
   </div>
@@ -200,8 +198,10 @@
       const music = document.getElementById("bgMusic");
 
       modal.style.display = "flex";
-      music.play();
-      video.play();
+
+      // Mobile-safe play
+      music.play().catch(() => {});
+      video.play().catch(() => {});
     }
 
     function closeVideo() {
@@ -233,4 +233,3 @@
 
 </body>
 </html>
-
