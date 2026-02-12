@@ -1,231 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>For You, My Love ❤️</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>For You, My Love ❤️</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #4a2c2a;
-      overflow: hidden;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #4a2c2a;
+  overflow-x: hidden;
+}
 
-    .card {
-      background: #fff;
-      width: 90%;
-      max-width: 420px;
-      border-radius: 24px;
-      padding: 28px 22px 32px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-      text-align: center;
-      animation: fadeUp 1.2s ease;
-      position: relative;
-      z-index: 2;
-    }
+.card {
+  background: #fff;
+  width: 90%;
+  max-width: 420px;
+  border-radius: 24px;
+  padding: 28px 22px 32px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  text-align: center;
+  animation: fadeUp 1.2s ease;
+  position: relative;
+  z-index: 2;
+}
 
-    h1 { font-size: 1.8rem; margin-bottom: 6px; }
-    h2 { font-size: 1.1rem; font-weight: 500; margin-bottom: 18px; color: #7a4a48; }
+button {
+  margin-top: 12px;
+  padding: 12px 26px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #ff4d6d, #ff758f);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
 
-    .heart {
-      font-size: 3rem;
-      margin: 10px 0 18px;
-      animation: beat 1s infinite;
-    }
+.highlight {
+  background: #fff1f2;
+  padding: 12px;
+  border-radius: 14px;
+  margin: 15px 0;
+}
 
-    p { font-size: 0.98rem; line-height: 1.65; margin-bottom: 14px; }
+.love-question {
+  margin-top: 25px;
+}
 
-    .highlight {
-      background: #fff1f2;
-      padding: 12px;
-      border-radius: 14px;
-      font-weight: 500;
-    }
+.answer-buttons {
+  position: relative;
+  height: 120px;
+  margin-top: 15px;
+}
 
-    button {
-      margin-top: 12px;
-      padding: 12px 26px;
-      border: none;
-      border-radius: 30px;
-      background: linear-gradient(135deg, #ff4d6d, #ff758f);
-      color: #fff;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 8px 20px rgba(255,77,109,0.4);
-    }
+#noBtn {
+  position: absolute;
+}
 
-    .love-message {
-      display: none;
-      margin-top: 16px;
-      font-size: 1.05rem;
-      color: #c9184a;
-      font-weight: 600;
-    }
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 5;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+}
 
-    footer {
-      margin-top: 22px;
-      font-size: 0.9rem;
-      color: #7a4a48;
-    }
+.modal-content {
+  background: #fff;
+  padding: 10px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 500px;
+}
 
-    .petal {
-      position: fixed;
-      top: -10%;
-      font-size: 22px;
-      animation: fall linear infinite;
-      z-index: 1;
-      pointer-events: none;
-    }
+.modal-content video {
+  width: 100%;
+  border-radius: 10px;
+}
 
-    @keyframes fall {
-      0% { transform: translateY(-10%) rotate(0deg); opacity: 1; }
-      100% { transform: translateY(110vh) rotate(360deg); opacity: 0.8; }
-    }
+.close {
+  font-size: 28px;
+  cursor: pointer;
+  float: right;
+}
 
-    @keyframes beat {
-      0%,100% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* 🎥 Video Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 5;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.7);
-      justify-content: center;
-      align-items: center;
-    }
-
-    .modal-content {
-      position: relative;
-      background: #fff;
-      padding: 10px;
-      border-radius: 15px;
-      width: 90%;
-      max-width: 500px;
-    }
-
-    .modal-content video {
-      width: 100%;
-      border-radius: 10px;
-    }
-
-    .close {
-      position: absolute;
-      top: -10px;
-      right: 10px;
-      font-size: 28px;
-      font-weight: bold;
-      cursor: pointer;
-      color: #ff4d6d;
-    }
-  </style>
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
 </head>
 
 <body>
 
-  <div class="card">
-    <h1>Happy Valentine’s Day 💖</h1>
-    <h2>For my husband, <strong>Karthikeyan</strong></h2>
+<div class="card">
 
-    <div class="heart">❤️</div>
+<h1>Happy Valentine’s Day 💖</h1>
+<h2>For my husband, <strong>Karthikeyan</strong></h2>
 
-    <p>
-      Life with you is proof that love means sharing food, stealing blankets,
-      and still choosing each other at the end of the day 😄❤️
-      Loving you means laughing at your jokes even when they’re not funny 😄❤️
-    </p>
+<p>
+Life with you is proof that love means sharing food,
+stealing blankets and still choosing each other 😄❤️
+</p>
 
-    <p class="highlight">
-      Next Valentine's won’t be just about us anymore…
-      it’ll be about <strong>three hearts</strong> — you, me, and our little miracle 👶💞
-    </p>
+<p class="highlight">
+Next Valentine's won’t be just about us anymore…
+three hearts 👶💞
+</p>
 
-    <button onclick="showLove()">I Love You</button>
-    <button onclick="openVideo()">Watch Our Special Video 🎥</button>
+<button onclick="openVideo()">Watch Our Special Video 🎥</button>
 
-    <div class="love-message" id="loveMessage">
-      Forever & always, I choose you ❤️
-    </div>
+<!-- Love Question Section -->
+<div class="love-question">
+  <h3>Do you love me? 😌</h3>
 
-    <footer>
-      With all my love,<br>
-      <strong>Sowmika S</strong> 💕
-    </footer>
+  <div class="answer-buttons">
+    <button onclick="yesLove()">Yes ❤️</button>
+    <button id="noBtn">No 😏</button>
   </div>
 
-  <!-- 🎥 Video Modal -->
-  <div id="videoModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeVideo()">&times;</span>
-      <video id="loveVideo" controls playsinline>
-        <source src=".mp4" type="video/mp4">
-      </video>
-    </div>
+  <div id="result" style="margin-top:15px;font-size:20px;"></div>
+</div>
+
+</div>
+
+<!-- Video Modal -->
+<div id="videoModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeVideo()">&times;</span>
+    <video id="loveVideo" controls playsinline>
+      <source src="WhatsApp Video 2026-02-12 at 8.10.41 AM.mp4" type="video/mp4">
+    </video>
   </div>
+</div>
 
-  <script>
-    function showLove() {
-      document.getElementById('loveMessage').style.display = 'block';
-    }
+<script>
 
-    function openVideo() {
-      const modal = document.getElementById("videoModal");
-      const video = document.getElementById("loveVideo");
+function openVideo() {
+  const modal = document.getElementById("videoModal");
+  const video = document.getElementById("loveVideo");
+  modal.style.display = "flex";
+  video.play().catch(()=>{});
+}
 
-      modal.style.display = "flex";
-      video.play().catch(() => {});
-    }
+function closeVideo() {
+  const modal = document.getElementById("videoModal");
+  const video = document.getElementById("loveVideo");
+  video.pause();
+  video.currentTime = 0;
+  modal.style.display = "none";
+}
 
-    function closeVideo() {
-      const modal = document.getElementById("videoModal");
-      const video = document.getElementById("loveVideo");
+const video = document.getElementById("loveVideo");
 
-      video.pause();
-      video.currentTime = 0;
-      modal.style.display = "none";
-    }
+video.addEventListener("ended", function () {
+  closeVideo();
+  setTimeout(() => {
+    alert("I was just being cringe for today 😜");
+  }, 300);
+});
 
-    const video = document.getElementById("loveVideo");
+function yesLove() {
+  document.getElementById("result").innerHTML = "I knew itttt 😌❤️❤️❤️";
+}
 
-    // 🎉 When video ends automatically
-    video.addEventListener("ended", function () {
-      closeVideo();
-      setTimeout(() => {
-        alert("I was just being cringe for today 😜");
-      }, 300);
-    });
+const noBtn = document.getElementById("noBtn");
 
-    function createPetal() {
-      const petal = document.createElement('div');
-      petal.classList.add('petal');
-      petal.innerText = '🌹';
-      petal.style.left = Math.random() * 100 + 'vw';
-      petal.style.animationDuration = 6 + Math.random() * 6 + 's';
-      document.body.appendChild(petal);
-      setTimeout(() => petal.remove(), 12000);
-    }
+noBtn.addEventListener("mouseover", function() {
+  const x = Math.random() * 250;
+  const y = Math.random() * 80;
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+});
 
-    setInterval(createPetal, 500);
-  </script>
+</script>
 
 </body>
 </html>
