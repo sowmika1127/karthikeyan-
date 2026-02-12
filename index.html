@@ -177,7 +177,7 @@
     <div class="modal-content">
       <span class="close" onclick="closeVideo()">&times;</span>
       <video id="loveVideo" controls playsinline>
-        <source src="WhatsApp Video 2026-02-12 at 8.10.41 AM.mp4" type="video/mp4">
+        <source src=".mp4" type="video/mp4">
       </video>
     </div>
   </div>
@@ -204,6 +204,16 @@
       modal.style.display = "none";
     }
 
+    const video = document.getElementById("loveVideo");
+
+    // 🎉 When video ends automatically
+    video.addEventListener("ended", function () {
+      closeVideo();
+      setTimeout(() => {
+        alert("I was just being cringe for today 😜");
+      }, 300);
+    });
+
     function createPetal() {
       const petal = document.createElement('div');
       petal.classList.add('petal');
@@ -219,4 +229,3 @@
 
 </body>
 </html>
-
