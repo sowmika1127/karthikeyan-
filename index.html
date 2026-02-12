@@ -26,79 +26,111 @@ body {
   padding: 28px 22px 32px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.15);
   text-align: center;
-  animation: fadeUp 1.2s ease;
   position: relative;
   z-index: 2;
 }
 
+h1 { font-size: 1.8rem; }
+h2 { font-size: 1.1rem; color: #7a4a48; }
+
+.heart {
+  font-size: 3rem;
+  animation: beat 1s infinite;
+}
+
 button {
-  margin-top: 12px;
-  padding: 12px 26px;
+  margin-top: 15px;
+  padding: 12px 22px;
   border: none;
   border-radius: 30px;
   background: linear-gradient(135deg, #ff4d6d, #ff758f);
   color: #fff;
   font-size: 1rem;
-  font-weight: 600;
   cursor: pointer;
+  position: relative;
 }
 
-.highlight {
-  background: #fff1f2;
-  padding: 12px;
-  border-radius: 14px;
-  margin: 15px 0;
+.love-message {
+  display: none;
+  margin-top: 10px;
+  color: #c9184a;
+  font-weight: bold;
 }
 
-.love-question {
+footer {
+  margin-top: 20px;
+}
+
+.video-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+}
+
+.video-content {
+  width: 90%;
+  max-width: 400px;
+  background: #fff;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.video-content video {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.close-btn {
+  text-align: right;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.answer-section {
   margin-top: 25px;
 }
 
 .answer-buttons {
   position: relative;
   height: 120px;
-  margin-top: 15px;
+}
+
+#yesBtn {
+  background: linear-gradient(135deg, #ff4d6d, #ff758f);
 }
 
 #noBtn {
+  background: gray;
   position: absolute;
+  left: 200px;
 }
 
-.modal {
-  display: none;
+.petal {
   position: fixed;
-  z-index: 5;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.7);
-  justify-content: center;
-  align-items: center;
+  top: -10%;
+  font-size: 22px;
+  animation: fall linear infinite;
+  pointer-events: none;
 }
 
-.modal-content {
-  background: #fff;
-  padding: 10px;
-  border-radius: 15px;
-  width: 90%;
-  max-width: 500px;
+@keyframes fall {
+  0% { transform: translateY(-10%); }
+  100% { transform: translateY(110vh); }
 }
 
-.modal-content video {
-  width: 100%;
-  border-radius: 10px;
-}
-
-.close {
-  font-size: 28px;
-  cursor: pointer;
-  float: right;
+@keyframes beat {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
 }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity:0; transform: translateY(20px); }
+  to { opacity:1; transform: translateY(0); }
 }
 </style>
 </head>
@@ -110,49 +142,61 @@ button {
 <h1>Happy Valentine’s Day 💖</h1>
 <h2>For my husband, <strong>Karthikeyan</strong></h2>
 
+<div class="heart">❤️</div>
+
 <p>
-Life with you is proof that love means sharing food,
-stealing blankets and still choosing each other 😄❤️
+Life with you means sharing food, stealing blankets,
+and still choosing each other 😄❤️.
+Loving you means laughing at your jokes even when they’re not funny 😄❤️
 </p>
 
 <p class="highlight">
-Next Valentine's won’t be just about us anymore…
-three hearts 👶💞
+Next Valentine's will be about three hearts 👶💞
 </p>
 
-<button onclick="openVideo()">Watch Our Special Video 🎥</button>
+<button onclick="showLove()">I Love You</button>
 
-<!-- Love Question Section -->
-<div class="love-question">
-  <h3>Do you love me? 😌</h3>
-
-  <div class="answer-buttons">
-    <button onclick="yesLove()">Yes ❤️</button>
-    <button id="noBtn">No 😏</button>
-  </div>
-
-  <div id="result" style="margin-top:15px;font-size:20px;"></div>
+<div class="love-message" id="loveMessage">
+Konjam over acting panniten… adjust panniko 😜
 </div>
 
-</div>
+<button onclick="openVideo()">Watch Surprise 🎥</button>
 
-<!-- Video Modal -->
-<div id="videoModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeVideo()">&times;</span>
-    <video id="loveVideo" controls playsinline>
+<div class="video-modal" id="videoModal">
+  <div class="video-content">
+    <div class="close-btn" onclick="closeVideo()">✖</div>
+    <video id="loveVideo" controls>
       <source src="WhatsApp Video 2026-02-12 at 8.10.41 AM.mp4" type="video/mp4">
     </video>
   </div>
 </div>
 
+<div class="answer-section">
+  <h3>Do You Love Me? 😌</h3>
+  <div class="answer-buttons">
+    <button id="yesBtn" onclick="yesAnswer()">Yes 💖</button>
+    <button id="noBtn">No 😏</button>
+  </div>
+</div>
+
+<footer>
+With all my love,<br>
+<strong>Sowmika S</strong> 💕
+</footer>
+
+</div>
+
 <script>
+
+function showLove() {
+  document.getElementById("loveMessage").style.display = "block";
+}
 
 function openVideo() {
   const modal = document.getElementById("videoModal");
   const video = document.getElementById("loveVideo");
   modal.style.display = "flex";
-  video.play().catch(()=>{});
+  video.play();
 }
 
 function closeVideo() {
@@ -163,20 +207,25 @@ function closeVideo() {
   modal.style.display = "none";
 }
 
-const video = document.getElementById("loveVideo");
-
-video.addEventListener("ended", function () {
+document.getElementById("loveVideo").addEventListener("ended", function() {
   closeVideo();
-  setTimeout(() => {
-    alert("I was just being cringe for today 😜");
-  }, 300);
+  alert("I was just being cringe for today 😛");
 });
 
-function yesLove() {
-  document.getElementById("result").innerHTML = "I knew itttt 😌❤️❤️❤️";
-}
+function yesAnswer() {
+  alert("Correct answer 😌 You may live peacefully now ❤️");
 
-<script>
+  for (let i = 0; i < 20; i++) {
+    const heart = document.createElement("div");
+    heart.innerText = "❤️";
+    heart.style.position = "fixed";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.top = Math.random() * 100 + "vh";
+    heart.style.animation = "fadeUp 2s ease";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 2000);
+  }
+}
 
 const noBtn = document.getElementById("noBtn");
 const container = document.querySelector(".answer-buttons");
@@ -184,15 +233,11 @@ const container = document.querySelector(".answer-buttons");
 document.addEventListener("mousemove", function(e) {
 
   const rect = noBtn.getBoundingClientRect();
-
   const distanceX = Math.abs(e.clientX - (rect.left + rect.width / 2));
   const distanceY = Math.abs(e.clientY - (rect.top + rect.height / 2));
 
-  // If cursor comes within 100px range
   if (distanceX < 100 && distanceY < 60) {
-
     const containerRect = container.getBoundingClientRect();
-
     const maxX = containerRect.width - rect.width;
     const maxY = containerRect.height - rect.height;
 
@@ -202,14 +247,21 @@ document.addEventListener("mousemove", function(e) {
     noBtn.style.left = randomX + "px";
     noBtn.style.top = randomY + "px";
   }
-
 });
 
-</script>
+function createPetal() {
+  const petal = document.createElement("div");
+  petal.classList.add("petal");
+  petal.innerText = "🌹";
+  petal.style.left = Math.random() * 100 + "vw";
+  petal.style.animationDuration = 6 + Math.random() * 6 + "s";
+  document.body.appendChild(petal);
+  setTimeout(() => petal.remove(), 12000);
+}
 
+setInterval(createPetal, 500);
 
 </script>
 
 </body>
 </html>
-
