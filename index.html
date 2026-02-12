@@ -100,6 +100,27 @@ button {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+  /* 🌹 Floating Roses Background */
+.rose {
+  position: fixed;
+  top: -10%;
+  font-size: 24px;
+  animation: fall linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-10%) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0.8;
+  }
+}
+
 </style>
 </head>
 
@@ -173,7 +194,7 @@ video.addEventListener("ended", function () {
 });
 
 function yesLove() {
-  document.getElementById("result").innerHTML = "I knew itttt 😌❤️❤️❤️";
+  document.getElementById("result").innerHTML = "I knew itttt , because you have no other option.😌❤️❤️❤️";
 }
 
 const noBtn = document.getElementById("noBtn");
@@ -184,8 +205,28 @@ noBtn.addEventListener("mouseover", function() {
   noBtn.style.left = x + "px";
   noBtn.style.top = y + "px";
 });
+  // 🌹 Create floating roses
+function createRose() {
+  const rose = document.createElement("div");
+  rose.classList.add("rose");
+  rose.innerText = "🌹";
+
+  rose.style.left = Math.random() * 100 + "vw";
+  rose.style.animationDuration = 6 + Math.random() * 6 + "s";
+
+  document.body.appendChild(rose);
+
+  setTimeout(() => {
+    rose.remove();
+  }, 12000);
+}
+
+// Create a rose every 500ms
+setInterval(createRose, 500);
+
 
 </script>
 
 </body>
 </html>
+
