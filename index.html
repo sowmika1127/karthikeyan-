@@ -170,11 +170,27 @@ three hearts 👶💞
 <script>
 
 function openVideo() {
+
   const modal = document.getElementById("videoModal");
   const video = document.getElementById("loveVideo");
-  modal.style.display = "flex";
-  video.play().catch(()=>{});
+
+  // Fake payment prank
+  let pay = confirm("💳 Premium Wife Content\n\nTo play this romantic video, please pay ₹500 😌❤️");
+
+  if (pay) {
+    alert("Processing payment... 💰");
+  } else {
+    alert("No money? Hmm suspicious 🤨");
+  }
+
+  // After prank, show real message
+  setTimeout(() => {
+    alert("Relax 😂 Just kidding! It's free for you forever ❤️");
+    modal.style.display = "flex";
+    video.play().catch(()=>{});
+  }, 1500);
 }
+
 
 function closeVideo() {
   const modal = document.getElementById("videoModal");
@@ -229,4 +245,5 @@ setInterval(createRose, 500);
 
 </body>
 </html>
+
 
