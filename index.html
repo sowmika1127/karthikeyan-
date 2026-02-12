@@ -166,11 +166,6 @@
       Forever & always, I choose you ❤️
     </div>
 
-    <!-- 🎵 Background Music (Mobile Safe) -->
-    <audio id="bgMusic" loop preload="auto" playsinline>
-      <source src="Unnodu Vazhatha.mp3" type="audio/mpeg" />
-    </audio>
-
     <footer>
       With all my love,<br>
       <strong>Sowmika S</strong> 💕
@@ -182,7 +177,7 @@
     <div class="modal-content">
       <span class="close" onclick="closeVideo()">&times;</span>
       <video id="loveVideo" controls playsinline>
-        <source src="WhatsApp Video 2026-02-11 at 6.41.59 PM.mp4" type="video/mp4">
+        <source src="IMG_6247.MOV" type="video/mp4">
       </video>
     </div>
   </div>
@@ -195,26 +190,17 @@
     function openVideo() {
       const modal = document.getElementById("videoModal");
       const video = document.getElementById("loveVideo");
-      const music = document.getElementById("bgMusic");
 
       modal.style.display = "flex";
-
-      // Mobile-safe play
-      music.play().catch(() => {});
       video.play().catch(() => {});
     }
 
     function closeVideo() {
       const modal = document.getElementById("videoModal");
       const video = document.getElementById("loveVideo");
-      const music = document.getElementById("bgMusic");
 
       video.pause();
       video.currentTime = 0;
-
-      music.pause();
-      music.currentTime = 0;
-
       modal.style.display = "none";
     }
 
@@ -233,4 +219,3 @@
 
 </body>
 </html>
-
